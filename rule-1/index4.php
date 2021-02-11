@@ -1,16 +1,9 @@
 <?php
 
-function validateHeroes($heroes)
-{
-    foreach ($heroes as $hero) {
+function validateHeroes($heroes) {
+    $validHeroes = array_filter($heroes, 'isValidHero');
 
-        if (! isValidHero($hero)) {
-            return false;
-        }
-
-    }
-
-    return true;
+    return (count($validHeroes) === count($heroes));
 }
 
 function isValidHero($hero) {

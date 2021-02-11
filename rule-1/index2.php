@@ -1,40 +1,40 @@
 <?php
 
-function validateHeroes($heroes) {
+function validateHeroes($heroes)
+{
 
     $requiredFields = [
         'name',
         'real_name',
         'powers',
-        'publisher'
+        'publisher',
     ];
 
     $valid = true;
-    
-    // 1º nível
+
     foreach ($heroes as $hero) {
 
-        // 2º nível
-        if (!validateSingleHero($hero, $requiredFields)) {
+        if (! validateSingleHero($hero, $requiredFields)) {
             $valid = false;
         }
+
     }
 
     return $valid;
 }
 
-function validateSingleHero($hero, $requiredFields) {
+function validateSingleHero($hero, $requiredFields)
+{
     $valid = true;
 
     $fields = array_keys($hero);
 
-    // 1º nível
     foreach ($requiredFields as $requiredField) {
 
-        // 2º nível
-        if (!in_array($requiredField, $fields)) {
+        if (! in_array($requiredField, $fields)) {
             $valid = false;
         }
+
     }
 
     return $valid;

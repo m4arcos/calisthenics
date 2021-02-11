@@ -1,28 +1,27 @@
 <?php
 
-function validateHeroes($heroes) {
+function validateHeroes($heroes)
+{
 
     $requiredFields = [
         'name',
         'real_name',
         'powers',
-        'publisher'
+        'publisher',
     ];
 
     $valid = true;
 
-    // 1º nível
     foreach ($heroes as $hero) {
 
         $fields = array_keys($hero);
 
-        // 2º nível
         foreach ($requiredFields as $requiredField) {
 
-            // 3º nível
-            if (!in_array($requiredField, $fields)) {
+            if (! in_array($requiredField, $fields)) {
                 $valid = false;
             }
+
         }
 
     }
