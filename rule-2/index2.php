@@ -1,20 +1,6 @@
 <?php
 
-class Hero {
-
-    public function isValid() {
-        return true;
-    }
-
-    public function save() {
-        return true;
-    }
-
-    public function isUnique() {
-        return true;
-    }
-
-}
+use App\Hero;
 
 function view($view, $error = null) {
     echo $view . (!empty($error) ? " - " . $error : "");
@@ -30,7 +16,16 @@ function createHero(Hero $hero) {
         return view("create", "Duplicated hero");
     }
 
+    if (!$hero->hasPowers()) {
+        return view("create", "The power info is missing");
+    }
+
+    if (!$hero->hasPublisher()) {
+        return view("create", "The publisher info is missing");
+    }
+
     $hero->save();
     
     return view("edit");
+
 }
