@@ -11,4 +11,6 @@ class Hero {
     protected $barRepository;
     protected $dogModel;
 
+    /* ... */
 }
+
